@@ -1,0 +1,41 @@
+[2022.0?.??] The idea of Terraria mod cames up. 3 person in one group formed the team "Ti works".
+
+[2022.05.10] First mod created in 1.18.1 with Forge in IntelliJ idea, learnt skills from @McJty at github. Version 0.0.1
+			 added simple ores like lead ore/deepslate .
+
+[2022.07.17] Developed ore generations. Found version problems may stop ourselves from developing mod by learning skills on internet. Version comes to 0.0.16
+			 added simple ores: tin, lead, tungsten, silver and platinum.
+			 completed ore generations for all ores.
+			 added materials related to ores like terrariamod:raw_tin.
+			 added recipes and loot tables for ores and materials.
+
+[2022.10.20] Decided to upgrade mod from 1.18.1(v0.0.17) to 1.18.2(v0.0.1)
+
+[2022.11.02] Upgraded. Something went wrong through the progress, seems like version code grammar differences leads to.
+
+[2022.12.21] Found and corrected all code. Version0.0.1, no version add.
+
+[2023.01.08] First try to write as 1.19 tutorials, and we success.Version0.0.1, we forgot to update.
+			 added tools related to materials like terrariamod:tin_pickaxe.
+			 added equipment related to materials like terrariamod:tin_helmet.
+
+[2023.02.09] For more than a month, we were trying to add mana system in game, and now, we win.Version 0.0.2-Alpha
+			 added network packs and a full mana system.
+			 added break mirror, it can teleport player to the place where player facing, max 20blocks.
+			 added magic mirror but it seems not working.
+
+[2023.02.16] added item: terraria mod info, test 32767 stick(a kind of sword which can hit over 32767 damage).Version 0.0.2-Alpha
+			 added paintings: maker_lib, tian_suo_hao_er, olligive.
+
+[2023.03.10] Items improved. Fix the problem: when using mirrors, Server thread sleeps 20sec.Version 0.0.2-Alpha
+			 added items: Mana potions(4 kinds), mana crystal, arcane crystal, magic gun(a iron hoe, shoot like a bow, it just for testing mana).
+
+[2023.04.02] Started creating monster:daemon eye.Version0.0.2
+
+[2023.04.20] Finished model, texture and ai for daemon eye. But this ai can't make it move.
+
+[2023.05.02] Re-write ai behavior but still can't move.
+
+[2023.05.08] This website makertechno.github.io/MakerStudio/products/products.html developed.
+
+[2023.05.27] Prepared code for Cthulhu boss. We suprisely found that the new ai we wrote could fit demon eye and now it could move!
