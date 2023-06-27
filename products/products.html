@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ti works:homepage</title>
+	<style>
+		body {
+			margin-top: 40px;
+			background-attachment: fixed;
+			font-family: Arial, sans-serif;
+		}
+		.box{
+			box-shadow: 5px 5px 5px #888888;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+		.sort{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+		}
+		.boximg{
+			vertical-align: middle;
+		}
+		.navbox{
+			margin-top: -20px;
+			background-color: green;
+			height: 110px;
+			width: 100%;
+			top: 0;
+			left: 0;
+		}
+		.navboxfoldp{
+			text-align: center;
+		}
+		.navboximg{
+			text-align: center;
+			margin-top: 10px;
+			height:64px;
+			object-fit: none;
+		}
+		.navboxword{
+			margin-top: -20px;
+			color: white;
+			font-size: 28px;
+			text-align: center;
+			border:none;
+		}
+		.navinword{
+			margin-top: -5px;
+			color: black;
+			margin-left: 5px;
+			font-size: 14px;
+			border:none;
+		}
+		.navinwordav{
+			text-align: center;
+			margin-top: 0px;
+			color: black;
+			font-size: 18px;
+			border:none;
+		}
+		.nav {
+			background-color: gray;
+			height: 50px;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+		.navimg{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			position: absolute;
+			left: 6px;
+			margin-top:5px;
+			height:40px;
+		}
+		.navh2{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			position: absolute;
+			left: 50px;
+			display: inline-block;
+			line-height: 50px;
+			color: white;
+			font-size: 26px;
+			text-align: center;
+		}
+		.navul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			position: absolute;
+			right: 0;
+		}
+		.navli {
+			display: inline-block;
+			color: white;
+			margin-right: 30px;
+			line-height: 50px;
+		}
+		h1 {
+			line-height:60px;
+			color: black;
+			font-size: 48px;
+			text-align: center;
+			border:none;
+		}
+		.navp {
+			line-height:40px;
+			color: black;
+			font-size: 28px;
+			text-align: center;
+			text-shadow: 1px 1px 2px black;
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<a href="../Testc.html"><img class="navimg" src="../resources/MakerApplicationIcon-white.png" alt="MakerStudio"></a>
+		<a href="../Testc.html"><h2 class="navh2"><b>Maker Studio</b></h2></a>
+		<ul class="navul">
+			<li class="navli">您位于: #产品</li>
+		</ul>
+	</nav>
+	<br/><br/><br/>
+	<h1>以下为我们的产品：</h1>
+	<nav class="sort">
+		<div class="box" style="width:300px;height:260px;border:1px solid #e2e2e2;display: inline-block">
+			<nav class="navboxr"></nav>
+			<nav class="navbox">
+				<p class="navboxfoldp">
+				<img class="navboximg" src="../resources/diamond_sword.png"/>
+				<p class="navboxword">Minecraft Cursors</p>
+			</nav>
+			<h6 class="navinwordav">介绍</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinword">一款“我的世界”鼠标集！包含了所有剑、铲子、镐子和一些动态物品如钟、指南针、弓弩等！</h6>
+			<hr style="margin-top: -30px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">系统要求：Windows7-11</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">下载链接</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinword" style="text-align: center;" style=" margin-top: -10px;">
+				<a href="../resources/MinecraftCursors.rar" download="MinecraftCursors.rar" style="color:orange; text-decoration: yellow; vertical-align: middle;">点我下载(.rar)</a>
+				<a href="#" class="navinword" style="-moz-user-select: none;-moz-user-select: none; -webkit-user-select: none; user-select: none; color:dimgray; text-decoration: yellow; vertical-align: middle;" title="版权问题,暂时无法下载">点我下载(.zip)</a>
+			</h6>
+		</div>
+		<div class="box" style="width:300px;height:360px;border:1px solid #e2e2e2;display: inline-block">
+			<nav class="navboxr"></nav>
+			<nav class="navbox" style="height: 140px; background-color:dimgrey">
+				<p class="navboxfoldp">
+				<img class="navboximg" src="../resources/Forge.png"/>
+				<img class="navboximg" src="../resources/Terraria.png"/>
+				<p class="navboxword">Minecraft Forge</p>
+				<p class="navboxword" style="margin-top: -30px; color: yellow;">Terraria Mod</p>
+			</nav>
+			<h6 class="navinwordav">介绍</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinword">一个基于Forge的Minecraft模组！主要编写关于泰拉瑞亚的方块、物品与生物。</h6>
+			<h6 class="navinword" style="color: darkred;margin-top: -35px;">目前仍在开发中，仅部分人可以参与测试</h6>
+			<hr style="margin-top: -30px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">Minecraft版本：1.18.2-Forge</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">Mod版本：0.0.2-snapshot-v1</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">下载链接</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinword" style="text-align: center;" style=" margin-top: -10px;"><a href="../resources/TerrariaMod.rar" download="TerrariaMod.rar" style="color:darkblue; text-decoration: yellow; vertical-align: middle;">点我下载(.rar)[已被加密]</a></h6>
+			<hr style="margin-top: -30px;"/>
+			<h6 class="navinword" style="text-align: center;" style=" margin-top: -10px;"><a href="../resources/Record.txt" target="_blank" style="color:darkred; text-decoration: yellow; vertical-align: middle;">查看更新日志</a></h6>
+		</div>
+		<div class="box" style="width:300px;height:250px;border:1px solid #e2e2e2;display: inline-block">
+			<nav class="navboxr"></nav>
+			<nav class="navbox" style="background-color: purple;height: 80px;">
+				<p class="navboxfoldp">
+				<img class="navboximg" style="margin-top: -10px;" src="../resources/滑稽.png"/>
+				<p class="navboxword" style="margin-top: -40px;">滑稽材质包</p>
+			</nav>
+			<h6 class="navinwordav">介绍</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinword">一款Minecraft材质包！修改了原版一些不是很重要地方的材质为滑稽材质，期待它为你带来惊喜！（滑稽.jpg）</h6>
+			<hr style="margin-top: -30px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">Minecraft:无明确要求</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinwordav" style="margin-top: -10px;">下载链接</h6>
+			<hr style="margin-top: -40px;"/>
+			<h6 class="navinword" style="text-align: center;" style=" margin-top: -10px;"><a href="../resources/HuajiTextures.zip" download="HuajiTextures.zip" style="color:green; text-decoration: yellow; vertical-align: middle;">点我下载(.zip)</a></h6>
+		</div>
+	</nav>
+	</body>
+</html>
