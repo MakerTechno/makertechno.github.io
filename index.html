@@ -6,6 +6,9 @@
 	<body>
 		<script type="text/javascript">
 		// 获取终端的相关信息
+		var now = new Date();
+		var month = now.getMonth();
+		var day = now.getDate();
 		var Terminal = {
 			// 辨别移动终端类型
 	        platform : function(){
@@ -23,13 +26,17 @@
 			language : (navigator.browserLanguage || navigator.language).toLowerCase()
 		}
 		try{
-		    switch(Terminal.language){
-				case 'en-us':
-					window.location.href="Test.html";
-				case 'zh-cn':
-					window.location.href="Testc.html";
-				default:
-					window.location.href="Testc.html";
+			if(month==4&&day==1){
+				window.location.href="./hide/index.html"
+			}else{
+				switch(Terminal.language){
+					case 'en-us':
+						window.location.href="Test.html";
+					case 'zh-cn':
+						window.location.href="Testc.html";
+					default:
+						window.location.href="Testc.html";
+				}
 			}
 		}catch(e){}
 		</script>
