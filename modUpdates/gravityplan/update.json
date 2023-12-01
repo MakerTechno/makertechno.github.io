@@ -1,0 +1,10 @@
+{
+  "homepage": "https://makertechno.github.io/products/products.html",
+  "1.19.4": {
+    "0.1": "First develop this mod, add force.",
+    "0.2": "Fix item force, reduce 5. Add mob falling explode, add furnace smelting tnt explode, fix little problems and fix update bugs."
+  },
+  "promos": {
+    "1.19.4-recommended": "0.2"
+  }
+}
