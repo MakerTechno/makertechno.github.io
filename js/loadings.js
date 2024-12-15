@@ -224,5 +224,6 @@ function decreaseAlpha() {
 	else {
 		delayTime = Number.MAX_SAFE_INTEGER;
 		div.style.scale = 0;
+		div.style.display='none';
 	}
 }
