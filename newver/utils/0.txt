@@ -1,0 +1,144 @@
+package works.mj.aram.chat_with_me.gui;
+
+import ...
+
+import static works.mj.aram.ARAM.LOGGER;
+
+public class GUI extends JFrame {
+    private final JLabel labelFocusTest = new JLabel("Test");
+    private final JPanel msgContent = new JPanel();
+    private final JTextArea textArea = new JTextArea("请输入文字");
+    JButton sendButton = new JButton("fa♂送");
+    private final User user;
+    /** Client */
+    public GUI(String name, String address, int port, String userName) throws IOException {
+        generalSetup(name);
+        extraSetup();
+        this.user = new SimpleUser(userName);
+        setVisible(true);
+        IMTCP imtcp = new BaseTCPConnect.Client(
+            address, port, msg -> {
+            MSGRow row = new MSGRow(user, LocalDateTime.now(), msg);
+            addMsg(row);
+        });
+        chattingFuncSetup(
+            imtcp
+        );
+    }
+    /** Server */
+    public GUI(String name, int port, String userName) {
+        generalSetup(name);
+        extraSetup();
+        this.user = new SimpleUser(userName);
+        setVisible(true);
+        try {
+            IMTCP imtcp = new BaseTCPConnect.Server(port, msg -> {
+                MSGRow row = new MSGRow(user, LocalDateTime.now(), msg);
+                addMsg(row);
+            });
+            chattingFuncSetup(
+                imtcp
+            );
+        } catch (IOException e) {
+            LOGGER.error("Failed to create server: ", e);
+            JOptionPane.showInternalMessageDialog(this, "无法启动服务。");
+            throw new RuntimeException();
+        }
+    }
+    public void generalSetup(String name){
+        setSize(500, 900);
+        setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle(name);
+    }
+
+    public void extraSetup() {
+        msgContent.setLayout(new BoxLayout(msgContent, BoxLayout.Y_AXIS));
+        Container container = getContentPane();
+        container.add(addChatBar(), BorderLayout.CENTER);
+    }
+
+    public JPanel addChatBar() {
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+
+        JScrollPane msgFieldSp = new JScrollPane(msgContent);
+        msgFieldSp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        JPanel textPanel = new JPanel(new BorderLayout());
+        JScrollPane textAreaSp = new JScrollPane(textArea);
+        textPanel.add(textAreaSp, BorderLayout.CENTER);
+        textPanel.add(sendButton, BorderLayout.EAST);
+
+        mainPanel.add(labelFocusTest, toGrid(0,0,1,1, 1, 0.02));
+        mainPanel.add(msgFieldSp, toGrid(0,1,1,1, 1,0.85));
+        mainPanel.add(textPanel, toGrid(0,2,1,1, 1, 0.13));
+        return mainPanel;
+    }
+
+    public void addMsg(MSGRow ...rows) {
+        Arrays.stream(rows).forEach(msg -> msgContent.add(msg.getContent()));
+        msgContent.revalidate();
+        msgContent.repaint();
+    }
+
+    public void chattingFuncSetup(IMTCP connect) {
+        KeyStroke enterKey = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.CTRL_DOWN_MASK); // 监听
+        AbstractAction abstractAction = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                processSend(connect);
+            }
+        };
+        textArea.registerKeyboardAction(abstractAction, enterKey, JComponent.WHEN_IN_FOCUSED_WINDOW);
+
+        sendButton.addActionListener(_ -> processSend(connect));
+    }
+
+    public void processSend(IMTCP connect) {
+        String msg = textArea.getText();
+        if (!msg.trim().isEmpty()) {
+            connect.sendMSG(msg);
+            MSGRow row = new MSGRow(user, LocalDateTime.now(), msg);
+            addMsg(row);
+            textArea.setText("");
+        } else JOptionPane.showMessageDialog(getContentPane(), "不可发送空白文字。");
+    }
+
+    public static @NotNull GridBagConstraints toGrid(int x, int y, int w, int h, double wx, double wy){
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = x;
+        gbc.gridy = y;
+        gbc.gridwidth = w;
+        gbc.gridheight = h;
+        gbc.weightx = wx;
+        gbc.weighty = wy;
+        gbc.fill = GridBagConstraints.BOTH;
+        return gbc;
+    }
+
+    public static class MSGRow{
+        private final User user;
+        private final LocalDateTime dateTime;
+        private final String msg;
+        public MSGRow(User user, LocalDateTime dateTime, String msg) {
+            this.user = user;
+            this.dateTime = dateTime;
+            this.msg = msg;
+        }
+        public JPanel getContent() {
+            JPanel mainPanel = new JPanel(new BorderLayout());
+
+            JPanel metaDataPanel = new JPanel(new GridBagLayout());
+            metaDataPanel.add(new JLabel(user.getName()), GUI.toGrid(0,0,1,1,0.3,1));
+            metaDataPanel.add(new JLabel(dateTime.toString()), GUI.toGrid(1,0,1,1,0.7,1));
+            mainPanel.add(metaDataPanel, BorderLayout.NORTH);
+
+            JTextArea textArea = new JTextArea(msg);
+            textArea.setEditable(false);
+            mainPanel.add(textArea, BorderLayout.CENTER);
+            mainPanel.setPreferredSize(new Dimension(0, 30 + textArea.getPreferredSize().height));
+            return mainPanel;
+        }
+    }
+}
