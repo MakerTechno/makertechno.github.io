@@ -8,8 +8,9 @@ body {
 }
 
 pre>code {
+	transform: scale(1);
 	font-family: 'JetBrains Mono', monospace;
-	font-size: 120%;
+	font-size: 1.6vw;
 	padding: 10px;
 	border-radius: 5px;
     overflow-wrap: break-word;
@@ -18,6 +19,7 @@ pre>code {
 }
 
 pre {
+	transform: scale(1);
     position: absolute;
     bottom: 0;
 	overflow: hidden;

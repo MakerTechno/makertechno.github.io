@@ -4,15 +4,7 @@ animateCanvas.id = 'animateCanvas';
 animateCanvas.innerText = 'Your browser does not support the HTML5 canvas tag.';
 document.body.appendChild(animateCanvas);
 
-function resizeCanvas() {
-	animateCanvas.width = window.innerWidth;
-	animateCanvas.height = window.innerHeight;
-}
-// 当窗口大小变化时调整尺寸
-window.addEventListener('resize', resizeCanvas);
-
 const aniCtx = animateCanvas.getContext('2d');
-resizeCanvas();
 aniCtx.fillStyle = 'rgba(0, 0, 0, 0.8)';
 
 const particles = [];
@@ -172,5 +164,26 @@ window.addEventListener('scroll', function() {
 });
 
 
+resizeCanvas();
 init();
 animate();
+
+
+function resizeCanvas() {
+	animateCanvas.width = window.innerWidth;
+	animateCanvas.height = window.innerHeight;
+	if (particles != null) {
+		disperseParticles(1.2);
+		if (anchorpt) {
+			const anchorRect = anchorElement.getBoundingClientRect();
+			setTargetPosition(anchorRect.left + anchorRect.width / 2, anchorRect.top + anchorRect.height / 2, Math
+				.max(anchorRect.width, anchorRect.height) / 2 + 20);
+		} else {
+			setTargetPosition(animateCanvas.width / 2, animateCanvas.height / 2, Math.min(animateCanvas
+					.width, animateCanvas.height) *
+				0.45);
+		}
+	}
+}
+// 当窗口大小变化时调整尺寸
+window.addEventListener('resize', resizeCanvas);
