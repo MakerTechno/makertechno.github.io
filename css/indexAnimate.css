@@ -8,6 +8,14 @@
 	z-index: -1;
 }
 
+.interactiveMouseBoard {
+	transition: transform 0.3s ease-in-out;
+}
+
+.interactiveMouseBoard:hover {
+    transform: scale(1.18);
+}
+
 .animateOutboard {}
 
 .animatedElement {}

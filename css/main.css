@@ -72,6 +72,7 @@ iframe {
 	width: 76%;
 	height: 76%;
 	border: none;
+	user-select: none;
 	z-index: -2;
 }
 
@@ -88,13 +89,65 @@ iframe {
 }
 
 .fore-overlay {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 110%;
-	background: radial-gradient(ellipse, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.9) 110%);
+	height: 100%;
+	background: radial-gradient(ellipse, rgba(0, 0, 0, 0) 50%, rgba(14, 159, 191, 0.9) 110%);
 	z-index: -1;
 	opacity: 1;
 	transition: opacity 0.05s ease-in-out;
+}
+
+.wave-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	z-index: -1;
+}
+
+.wave-container svg {
+	position: absolute;
+	bottom: 0;
+	width: 200%;
+	animation: waveMove 20s ease-in-out infinite alternate;
+}
+
+.wave-top {
+	bottom: 0vh;
+	opacity: 0.5;
+}
+
+.wave-top svg {
+	animation: waveMove 40s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.wave-bottom {
+	bottom: 0;
+	opacity: 1;
+}
+
+.wave-bottom svg {
+	animation: waveMove 40s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse;
+	animation-delay: -10s;
+}
+
+.wave-container svg path {
+	fill: white;
+}
+
+@keyframes waveMove {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-50%);
+	}
 }

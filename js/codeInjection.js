@@ -74,10 +74,23 @@ async function getFileContent(name, enableBugsEgg) {
 	}
 }
 
+async function clsReset(resetIt) {
+	if (injectPort.style.opacity == (resetIt ? 0 : 1)) {
+	    injectPort.style.opacity = resetIt ? 1 : 0;
+	    await new Promise(resolve => setTimeout(resolve, 1000));
+	}
+}
+
+var i1stPlay = true;
+
 async function playSegment() {
-	const code = await getFileContent(getRandomInt(0, 4).toString(), true);
+	const v1 = await getFileContent(getRandomInt(0, 4).toString(), true);
+	const code = v1.replace(/\r\n/g, "\n");
+	if (!i1stPlay) await clsReset(false);
 	injectPort.textContent = "";
+	await clsReset(true);
 	injectPort.appendChild(cursor);
+	
 	var extraCount = 0;
 	var spaceJump = false;
 	var fasternComment = "";
@@ -121,7 +134,10 @@ async function playSegment() {
 		await new Promise(resolve => setTimeout(resolve, 70 + extraCount));
 	}
 	
+	i1stPlay = false;
+	
 	if (code != ERROR_CODE) setTimeout(playSegment, 8000);
+	else setTimeout(playSegment, 20000);
 }
 
 playSegment(); // 启动播放

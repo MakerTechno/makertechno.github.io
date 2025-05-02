@@ -9,6 +9,7 @@ body {
 
 pre>code {
 	transform: scale(1);
+	transition: 0.8s ease-out;
 	font-family: 'JetBrains Mono', monospace;
 	font-size: 1.6vw;
 	padding: 10px;
