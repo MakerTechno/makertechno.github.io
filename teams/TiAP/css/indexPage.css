@@ -1,0 +1,25 @@
+.mainland {
+	background-image: url('../resources/wallPaperx1920s.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: Arial, sans-serif;
+}
+
+h1 {
+		line-height:240%;
+		color: White;
+		font-size: 48px;
+		text-align: center;
+		border:none;
+		text-shadow: 1px 1px 2px black;
+}
+
+p {
+	line-height: 40px;
+	color: lightgray;
+	font-size: 28px;
+	text-align: center;
+	text-shadow: 1px 1px 2px black;
+}

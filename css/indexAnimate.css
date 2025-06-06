@@ -1,0 +1,38 @@
+#animateCanvas {
+	display: block;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	pointer-events: none;
+	opacity: 0.7;
+	transition: opacity 0.6s ease-in-out;
+}
+
+.interactiveMouseBoard {
+	transition: transform 0.3s ease-in-out;
+}
+
+.interactiveMouseBoard:hover {
+    transform: scale(1.18);
+}
+
+.animateOutboard {}
+
+.animatedElement {}
+
+.animateMaintainer {}
+
+.animateFocus {}
+@keyframes expandColor {
+    0% {
+        transform: scale(0);
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(2);
+        background-color: rgba(0, 0, 0, 40); /* 更深 */
+    }
+}

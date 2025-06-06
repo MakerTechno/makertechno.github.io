@@ -1,0 +1,73 @@
+.widgetBar {}
+.widgetSubscriber {}
+.repoCount {}
+.starsCount {}
+.forksCount {}
+.hf-img {
+	margin-top: 2em;
+	margin-bottom: 1em;
+    transition: transform 1s ease-in-out;
+}
+.hf-img:hover {
+	transform: rotate(720deg);
+}
+.rf-txt {
+	font-size: 0.9em;
+	color: #545454;
+	margin-bottom: 0.8em;
+}
+.githubStatisticBox {
+    display: flex;
+    align-items: center;
+	margin: 0.4em;
+}
+.githubStatisticBox > * {
+    padding: 0px 20px;
+	text-align: center;
+    border-right: 2px solid gray;
+}
+
+.githubStatisticBox > *:last-child {
+    border-right: none !important;
+}
+.githubStatisticBox h4 {
+	color: gray;
+}
+.githubStatisticBox p {
+	color: dimgrey;
+	font-size: 2em;
+}
+.follow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #20a6ff;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.follow-btn:hover {
+    background-color: #1d72d9;
+    transform: scale(1.05);
+}
+.follow-btn >img {
+	width: auto;
+	height: 1.2em;
+	margin: 0.1em;
+}
+.follow-btn >span {
+    white-space: nowrap;
+	margin-left: 1em;
+}
+.imgFit {
+	height: 80%;
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
+	margin-right: 10px;
+}
