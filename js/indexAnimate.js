@@ -113,6 +113,7 @@ function disperseParticles(size) {
 	particles.forEach(particle => {
 		particle.editSpeed = (Math.random() + 1) * size;
 	});
+	autoFallOpacity = paraFallCount;
 }
 
 document.querySelectorAll('.animateOutboard').forEach(element => {

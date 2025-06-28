@@ -37,35 +37,3 @@ async function fetchGithub() {
 	}
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-	fetchGithub();
-});
-
-function setCache(key, value, expireHours) {
-	const now = new Date().getTime();
-	const expireTime = now + expireHours * 60 * 60 * 1000;
-	const data = {
-		value,
-		expireTime
-	};
-	localStorage.setItem(key, JSON.stringify(data));
-}
-
-function getCache(key) {
-	const dataStr = localStorage.getItem(key);
-	if (!dataStr) return null;
-
-	const data = JSON.parse(dataStr);
-	if (new Date().getTime() > data.expireTime) {
-		localStorage.removeItem(key);
-		return null;
-	}
-	return data.value;
-}
-
-// 存储信息，时长为12小时
-// setCache('myData', 'Hello, MakerTechno!', 12);
-
-// 读取信息
-// console.log(getCache('myData'));

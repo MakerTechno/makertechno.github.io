@@ -1,13 +1,28 @@
 let lastScrollTop = 0;
-const stickyBar = document.getElementById("sticky-bar");
+var stickyBar = null;
 
-window.addEventListener("scroll", () => {
+function initBar() {
+	stickyBar = document.getElementById("sticky-bar");
+	window.addEventListener("scroll", () => {
+		doSet();
+	});
 	doSet();
+}
+fetch("modulePages/stickyBar.html")
+	.then(response => response.text())
+	.then(data => {
+		document.body.insertAdjacentHTML("afterbegin", data);
+	})
+	.catch(error => console.error("加载顶部条失败：", error));
+
+waitForElement("sticky-bar", () => {
+	initBar();
 });
+
 
 function doSet() {
 	let scrollTop = window.scrollY;
-	let opacity = Math.min(scrollTop / (window.innerHeight/5*4) + 0.1, 1);
+	let opacity = Math.min(scrollTop / (window.innerHeight / 5 * 4) + 0.1, 1);
 	let vp = opacity * 0.2;
 	stickyBar.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
 	stickyBar.style.boxShadow = ` 0px 3px 7px rgba(0, 0, 0, ${vp})`;
@@ -21,4 +36,3 @@ function doSet() {
 	}
 	lastScrollTop = scrollTop;
 }
-doSet();

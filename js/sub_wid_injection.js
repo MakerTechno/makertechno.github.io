@@ -8,3 +8,5 @@ fetch("modulePages/subscribe_widget.html")
         });
     })
     .catch(error => console.error("加载订阅组件失败：", error));
+
+waitForElement("0x000001", () => {fetchGithub()});

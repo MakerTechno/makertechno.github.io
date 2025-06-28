@@ -12,26 +12,12 @@
 		<link rel="stylesheet" type="text/css" href="css/indexAnimate.css">
 		<link rel="stylesheet" type="text/css" href="css/stickyBar.css" />
 		<link rel="stylesheet" type="text/css" href="css/widgets.css" />
+		<script src="js/pubEvent.js"></script>
+		<script src="js/NetSourceInjection.js"></script>
 	</head>
 	<body>
 		<!-- 主要内容 -->
 		<script src="js/loading.js"></script>
-		<div id="sticky-bar">
-			<div class="barLeft">
-				<a href="main.html?anit">
-					<img src="resources/imgs/MakerApplicationIcon-black.ico" alt="MakerTechno">
-					<h2><b>Maker Techno</b></h2>
-				</a>
-			</div>
-			<nav class="navMenu">
-				<ul>
-					<li><a href="teamResouces/TeamResources.html">team resouces</a></li>
-					<li><a href="products/products.html">products</a></li>
-					<li><a href="introduce/introduce.html">about us</a></li>
-					<li><button class="sidebarBtn"><img src="resources/imgs/menu.png" class="imgFit" /></button></li>
-				</ul>
-			</nav>
-		</div>
 		<script src="js/stickyBar.js"></script>
 
 		<div class="animateMaintainer boardFull">
@@ -73,9 +59,9 @@
 			</svg>
 		</div>
 
-		<div class="animateOutboard contentHolder CHst" style="background-color: var(--maintain-aob-col);">
-			<div class="linek">
-				<div class="animatedElement linekin widgetBar"></div>
+		<div class="animateOutboard contentHolder gridFC CHst" style="background-color: var(--maintain-aob-col);">
+			<div class="linek displayedSidebarEn">
+				<div class="animatedElement linekin widgetBar displayedSidebarEn"></div>
 			</div>
 			<div class="introTextPane">
 				<p>
@@ -95,24 +81,59 @@
 				</p>
 			</div>
 		</div>
-		<div class="animateOutboard contentHolder CHst">
-			<div class="linek">
-				<div class="animatedElement linekin">
-					<img src="resources/imgs/Ti.png" class="hf-img" title="MakerTechno" />
-					<h2><b>Ti adventurers' party</b></h2>
-					<p class="rf-txt">自由开发者团队</p>
-					<a href="teams/TiAP/Testc.html" style="margin: 1em 2em;">
-						<button class="follow-btn" type="button">
-							<span>前往团队主页</span>
-						</button>
-					</a>
+		<div class="animateOutboard contentHolder">
+			<div class="bTitleTextPane">
+				<h1>团队列表：</h1>
+			</div>
+			<div class="flexAll" id="cards">
+				<div class="linek selectedOpt">
+					<div class="animatedElement linekin">
+						<div class="hf-div takeBoarder">
+							<img src="resources/imgs/Bugic_Team.png" class="hf-img" title="Magic_Team.jvav" />
+						</div>
+						<h2><b>Magic_Team.jvav</b></h2>
+						<p class="rf-txt">汇流来世(中国)我的世界模组团队</p>
+						<a href="https://www.mcmod.cn/author/33739.html" style="margin: 1em 2em;">
+							<button class="follow-btn" type="button">
+								<img src="resources/imgs/mcmod.png" class="imgFit" title="On MCMod" />
+								<span>前往团队主页</span>
+							</button>
+						</a>
+					</div>
+				</div>
+				<div class="linek selectedOpt">
+					<div class="animatedElement linekin">
+						<div class="hf-div takeBoarder">
+							<img src="resources/imgs/Ti.png" class="hf-img" title="Ti" />
+						</div>
+						<h2><b>Ti adventurers' party</b></h2>
+						<p class="rf-txt">自由开发者团队</p>
+						<a href="teams/TiAP/Testc.html" style="margin: 1em 2em;">
+							<button class="follow-btn" type="button">
+								<span>前往团队主页</span>
+							</button>
+						</a>
+					</div>
+				</div>
+				<div class="linek selectedOpt">
+					<div class="animatedElement linekin">
+						<div class="hf-div takeBoarder">
+							<img src="resources/imgs/Reasonable.jpg" class="hf-img" title="Reasonable" />
+						</div>
+						<h2><b>Reasonable(禾李)</b></h2>
+						<p class="rf-txt">一个基于Minecraft社区的周边开发团队</p>
+						<a href="https://www.reasonable.org.cn/" style="margin: 1em 2em;">
+							<button class="follow-btn" type="button">
+								<span>前往团队主页</span>
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="introBackground"></div>
 		<!-- js later interaction -->
 		<script src="js/sub_wid_injection.js" data-ids="widgetBar" data-indexx="0" id="widgetSubscriber"></script>
-		<script src="js/NetSourceInjection.js"></script>
 		<script src="js/indexAnimate.js"></script>
 	</body>
 	<footer>

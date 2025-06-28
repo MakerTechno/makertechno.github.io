@@ -17,3 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 });
+window.addEventListener('popstate', function() {
+    overlay.style.display = 'none';
+	overlay.style.animation = 'none';
+});

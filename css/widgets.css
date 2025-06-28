@@ -3,13 +3,28 @@
 .repoCount {}
 .starsCount {}
 .forksCount {}
-.hf-img {
+.hf-div {
 	margin-top: 2em;
 	margin-bottom: 1em;
-    transition: transform 1s ease-in-out;
+	object-fit: contain;
+	max-width: 160px;
+	line-height: 0%;
+}
+.hf-img {
+	width: 100%;
+	object-fit: contain;
+    transition: all 1s ease-in-out;
 }
 .hf-img:hover {
-	transform: rotate(720deg);
+	transform: rotate(720deg) scale(1.1);
+}
+.couldLarger {}
+.couldLarger:active {
+	transform: rotate(1440deg) scale(3.0);
+}
+.takeBoarder {
+	overflow: hidden;
+	border-radius: 90px;
 }
 .rf-txt {
 	font-size: 0.9em;
@@ -60,14 +75,13 @@
 	width: auto;
 	height: 1.2em;
 	margin: 0.1em;
+	margin-right: 1em;
 }
 .follow-btn >span {
     white-space: nowrap;
-	margin-left: 1em;
 }
 .imgFit {
 	height: 80%;
-	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	margin-right: 10px;
 }
