@@ -5,6 +5,10 @@ var day = now.getDate();
 
 var language = (navigator.browserLanguage || navigator.language).toLowerCase()
 
+document.addEventListener('DOMContentLoaded', function() {
+	document.title = "Redirecting...";
+});
+
 try {
 	if (month == 3 && day == 1) {
 		window.location.href = "./hide/index.html"
