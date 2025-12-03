@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
-<title data-rh="true">EntityTrackerHUD | MakerTechno Documents</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://makertechno.github.io/docs/img/Maker.png"><meta data-rh="true" name="twitter:image" content="https://makertechno.github.io/docs/img/Maker.png"><meta data-rh="true" property="og:url" content="https://makertechno.github.io/docs/apis/ethud"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-apis-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-apis-current"><meta data-rh="true" property="og:title" content="EntityTrackerHUD | MakerTechno Documents"><meta data-rh="true" name="description" content="logo"><meta data-rh="true" property="og:description" content="logo"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://makertechno.github.io/docs/apis/ethud"><link data-rh="true" rel="alternate" href="https://makertechno.github.io/docs/apis/ethud" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://makertechno.github.io/docs/apis/ethud" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EntityTrackerHUD","item":"https://makertechno.github.io/docs/apis/ethud"}]}</script><link rel="stylesheet" href="/docs/assets/css/styles.73dea3c5.css">
-<script src="/docs/assets/js/runtime~main.080a83d9.js" defer="defer"></script>
-<script src="/docs/assets/js/main.25887a74.js" defer="defer"></script>
+<title data-rh="true">EntityTrackerHUD | MakerTechno Documents</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://makertechno.github.io/docs/img/Maker.png"><meta data-rh="true" name="twitter:image" content="https://makertechno.github.io/docs/img/Maker.png"><meta data-rh="true" property="og:url" content="https://makertechno.github.io/docs/apis/ethud"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-apis-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-apis-current"><meta data-rh="true" property="og:title" content="EntityTrackerHUD | MakerTechno Documents"><meta data-rh="true" name="description" content="logo"><meta data-rh="true" property="og:description" content="logo"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://makertechno.github.io/docs/apis/ethud"><link data-rh="true" rel="alternate" href="https://makertechno.github.io/docs/apis/ethud" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://makertechno.github.io/docs/apis/ethud" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EntityTrackerHUD","item":"https://makertechno.github.io/docs/apis/ethud"}]}</script><link rel="stylesheet" href="/docs/assets/css/styles.08a760ff.css">
+<script src="/docs/assets/js/runtime~main.e0eacb0f.js" defer="defer"></script>
+<script src="/docs/assets/js/main.1d63975c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -18,46 +18,69 @@
 <p>模组已在汇流来世<strong>内置</strong>。</p>
 <p>用户可以通过模组配置（文件或游戏内配置 GUI）对模组进行以下设置：</p>
 <ol>
-<li>开关：设置是否启用本模组；</li>
-<li>投影类型：可以切换不同投影 HUD，由于目前只有 1 种投影模式，所以该按钮暂时<strong>不起作用；</strong></li>
-<li>投影算法：可以选择<strong>中心环绕投影</strong>（第 2 条中的CENTER_RELATIVE 投影）使用的算法；</li>
-<li>跟踪：这是一个列表，每个条目对应一种实体（EntityType）+指针组（Cursor），可以填入键名设置追踪哪类实体、使用何种指针提示，详见下文<strong>配置模组</strong>。</li>
+<li>开关：设置是否启用本模组的追踪功能；</li>
+<li>追踪指针大小：控制全局指针的相对大小，默认值0.6（后期会使1为默认值的）</li>
+<li>最大追踪数量：控制追踪的数量，防止太多指针遮挡屏幕。最终只会显示离玩家最近的n个生物。默认值10，最大400（真的有人需要比400还多的追踪吗？需要的话来群里跟我说好了）。</li>
+<li>位置刷新间隔：从世界中附近的区域获取并更新实体位置的最短时间，默认值是最小值1（最快）。</li>
+<li>中心环绕式指针开关：最常用的指针类型之一。有关中心环绕式的详情请见<strong>下文</strong>。</li>
+<li>投影算法：可以选择在<strong>中心环绕投影</strong>下使用的算法。艾托夫（Aitoff）可能是表现最正常的投影，所以一般不切换；</li>
+<li>锁定定位式指针开关：在其它游戏中更为常见的一种任务类指针。有关锁定定位式的详情请见<strong>下文</strong>。</li>
+<li>经度轴开关：预分配的第三种指示类型，目前未加入，所以该条目无效。</li>
+<li>XXX式跟踪清单：这是一个列表，每个条目对应一种实体（EntityType）+指针组（Cursor），可以填入键名设置追踪哪类实体、使用何种指针提示，详见下文<strong>配置模组</strong>。</li>
 </ol>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="跟踪详解">跟踪详解<a href="#跟踪详解" class="hash-link" aria-label="跟踪详解的直接链接" title="跟踪详解的直接链接">​</a></h2>
 <p>目前限定跟踪的距离是 [x：±64 格, y：+64/-48 格, z：±64 格]。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="中心环绕式">中心环绕式<a href="#中心环绕式" class="hash-link" aria-label="中心环绕式的直接链接" title="中心环绕式的直接链接">​</a></h3>
 <p><strong>中心环绕模式</strong>是目前已经完成的指示模式，它会创建环绕中心的指针 HUD 指示生物实体。</p>
-<p>如图（请忽略桌宠）：
+<p>这是旧版（请忽略桌宠）：
 <img decoding="async" loading="lazy" alt="taag.png" src="/docs/assets/images/taag-e2251a045b56f087b0c800c08e290099.png" width="651" height="348" class="img_ev3q"></p>
+<p>这是新版（未修正）：</p>
+<p><img decoding="async" loading="lazy" alt="taagNew.png" src="/docs/assets/images/taagNew-57ecaf5e847304816839cba1492bf729.png" width="893" height="549" class="img_ev3q"></p>
 <p>不难看出这是提示“你该<strong>向哪里转</strong>能看到实体”而<strong>不是</strong>“实体<strong>在</strong>世界的<strong>哪个位置</strong>”的指针。</p>
 <p>该指针会依据你“应该转多远”而距离中心更远或更近。</p>
 <p>在更加靠近中心的位置，也就是实体方向与你的视角基本重合的时候，指针会逐渐变淡。（绿色指向的是附近的末影人）</p>
 <p>该投影有三种算法：墨卡托（Mercator）投影、埃托夫（Aitoff）投影和温克尔（Winkel）三重投影，应用思维请见<a href="https://github.com/MakerTechno/EntityTrackerHUD/blob/master/ALGORITHM.MD" target="_blank" rel="noopener noreferrer">逻辑</a>。</p>
 <p>经过测试，三种投影表观上差异不大，而 Aitoff 在应用场景下表现最好，故不建议选择其它两种投影。</p>
-<p>[h1=配置模组]</p>
-<p>在游戏中，你可以通过这个格式在配置中创建一个指针类型：</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="锁定定位式">锁定定位式<a href="#锁定定位式" class="hash-link" aria-label="锁定定位式的直接链接" title="锁定定位式的直接链接">​</a></h3>
+<p>12.3晚间：刚刚关了忘记截了，也没调太好，总之等我下一次更新吧 :）</p>
+<p>这个模式会直接把指针糊在目标生物上（不是在世界中糊而是确实从屏幕糊过去）</p>
+<p>有单独显示大头贴的类型和三个图片环绕目标的类型</p>
+<p>还有两种类型是彩蛋！想知道就去MCMOD翻汇流的更新日志吧Lol</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="配置模组">配置模组<a href="#配置模组" class="hash-link" aria-label="配置模组的直接链接" title="配置模组的直接链接">​</a></h2>
+<p>在游戏中，你可以通过这个格式在配置中创建一个<strong>中心环绕式</strong>指针类型：</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;modid:实体类型&gt;|&lt;指针箭头类型&gt;|&lt;指针图标类型&gt;</span><br></span></code></pre></div></div>
 <p>例如，模组默认配置中的末影龙提示器是这样的：</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">minecraft:ender_dragon|normal_red|ender_dragon_head</span><br></span></code></pre></div></div>
+<p>然后就是锁定定位式。</p>
+<p>这种模式的配置更复杂，并且处于实验阶段。以下是配置规则，被圆括号围起来的部分表示可写可不写，但是写了效果确实不同。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"> &lt;modid:实体类型&gt;|&lt;指针类型&gt;:&lt;指针图标类型&gt;(|彩蛋属性)</span><br></span></code></pre></div></div>
 <p>目前提供的指针箭头有：</p>
 <p>normal_red、normal_green、normal_white。</p>
-<p>如图是 normal_red：<img decoding="async" loading="lazy" alt="red.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAD2AAAA9gAXp4RY0AAAEZSURBVEhLxZLPSgJRFIfvgG1ca0EPIYjSE0T7kBYSBe3btPAlXJiB4NMo4ZMogU8Q0ya170y/caPica7oD765956/DOeEGK3K1/fQ0vO0ovEDLEVb5tOIho/wAyth9ye5D1Ki0yWalDi68JYZQhjCAl6zVwh96CTp/Pf/eUTRvAIjyP/4RS7zPctmvjFU5TqOKFiHqRp8wY1ca2FrwkwxFtuQK04UsnmnKjyBK7k2hO8SPhVrOYX2IhPJJeipmDGAC7l3ymLgQznGO9ju+EXCznl7RU6xvSBw77y9IvewvSDAPW+vqLF/LzAWmrdXVgu27wWX6Hl7Re3NveBTg2+ImrdX9Mj3wsZRz423ED1vr+hle3Gn5zkVwh9jV9QT0GFpTgAAAABJRU5ErkJggg==" width="32" height="16" class="img_ev3q"></p>
+<p>如图是 normal_red：<img decoding="async" loading="lazy" alt="red.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAD2AAAA9gAXp4RY0AAAEZSURBVEhLxZLPSgJRFIfvgG1ca0EPIYjSE0T7kBYSBe3btPAlXJiB4NMo4ZMogU8Q0ya170y/caPica7oD765956/DOeEGK3K1/fQ0vO0ovEDLEVb5tOIho/wAyth9ye5D1Ki0yWalDi68JYZQhjCAl6zVwh96CTp/Pf/eUTRvAIjyP/4RS7zPctmvjFU5TqOKFiHqRp8wY1ca2FrwkwxFtuQK04UsnmnKjyBK7k2hO8SPhVrOYX2IhPJJeipmDGAC7l3ymLgQznGO9ju+EXCznl7RU6xvSBw77y9IvewvSDAPW+vqLF/LzAWmrdXVgu27wWX6Hl7Re3NveBTg2+ImrdX9Mj3wsZRz423ED1vr+hle3Gn5zkVwh9jV9QT0GFpTgAAAABJRU5ErkJggg==" width="32" height="16" class="img_ev3q">，新版如上图中所示，以后会改名的。</p>
 <p>目前提供的图标有：</p>
 <ul>
 <li>[基于原版] none、ender_dragon_head、wither_head；</li>
 <li>[汇流来世] king_slime、eye_of_cthulhu、brain_of_cthulhu、queen_bee、eater_of_worlds。</li>
 </ul>
-<p>汇流来世提供的图标并不需要汇流来世作为前置。</p>
+<p>汇流来世提供的图标其实不需要加载汇流来世作为前置就能使用。</p>
 <p>在选择 none 时指针不会有图标，只有箭头。</p>
 <p>如图是 ender_dragon_head（取材自 MCMod 百科）：<img decoding="async" loading="lazy" alt="ender_dragon.png" src="data:image/png;base64,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" width="32" height="32" class="img_ev3q"></p>
-<p>目前只有这几种图标，将来<strong>可能</strong>会考虑添加独立配置栏供玩家自定义图标。</p>
+<p>啊对，这些图标理论上是共通的，实际上...我判断写的不是很全，有时候行的有时候就不行。</p>
+<p>你还可以用材质包什么的添加新材质进来，不重名就能直接引用到！</p>
 <p><strong>注意：由于优化指针视觉，所有实体出自 PartEntity 的部分不会被指示，比如末影龙的翅膀和尾巴。</strong></p>
-<p><strong>Tip：追踪指示第二段工程已经完成，已经在汇流来世投产，但配置体系还存在不完善、不合理的地方，故暂缓文档编写作者在摆烂，请稍安勿躁</strong></p>
-<p>备注：作者现在正在赶工摆烂，计划完成第三段更新的头顶方位指示器，欢迎来 <strong>Ti works 的 QQ 群 953398884</strong>或 <strong>汇流来世 QQ 群</strong> 支持作者、助力作者。</p>
+<p><strong>Tip：追踪指示第...总之是很多东西已经完成，已经在汇流来世投产，但配置体系还存在不完善、不合理的地方，故暂缓文档编写作者打算继续摆烂MCMOD更新和别的地方的上架，搓一下对外的接口</strong></p>
+<p>备注：欢迎来 <strong>Ti works 的 QQ 群 953398884</strong>或 <strong>汇流来世 QQ 群</strong> 支持作者、助力作者。（我打算开个赞助号什么的...不过也是好久后的事情了）</p>
 <p>以下是将来的计划：</p>
-<p>第三段计划：独立水平经度轴+指示</p>
-<p>第四段计划：更自由的配置（允许配置生物图标等）</p>
-<p>第五段计划：更改基本取点实现，使模组支持固定坐标引导和组件</p>
-<p>第六段计划：使模组可以通过外部调用（代码/指令）创建、修改坐标引导、持久化引导</p>
-<p>第七段计划(不一定实行)：加入声音定位系统并与旅行地图联动显示</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#跟踪详解" class="table-of-contents__link toc-highlight">跟踪详解</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/tutorial/nf1.21">NeoForge1.21Tutorial</a></li></ul></div><div class="theme-layout-footer-column col footer__col text--center"><div class="footer__title">APIs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/apis/ethud">EntityTrackerHUD</a></li></ul></div><div class="theme-layout-footer-column col footer__col text--right"><div class="footer__title">Me</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://space.bilibili.com/549306753" target="_blank" rel="noopener noreferrer" class="footer__link-item">Bilibili<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/FSVEp7hSdA" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/MakerTechno" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 MakerTechno, Dev. Built with Docusaurus.</div></div></div></footer></div>
+<ul>
+<li>
+<p>独立水平经度轴+指示</p>
+</li>
+<li>
+<p>使模组可以通过外部调用（代码/指令）创建、修改坐标引导、持久化引导</p>
+</li>
+<li>
+<p>(不可能会实行) 与旅行地图联动显示--ARR连个锤子</p>
+</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#跟踪详解" class="table-of-contents__link toc-highlight">跟踪详解</a><ul><li><a href="#中心环绕式" class="table-of-contents__link toc-highlight">中心环绕式</a></li><li><a href="#锁定定位式" class="table-of-contents__link toc-highlight">锁定定位式</a></li></ul></li><li><a href="#配置模组" class="table-of-contents__link toc-highlight">配置模组</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/tutorial/nf1.21">NeoForge1.21Tutorial</a></li></ul></div><div class="theme-layout-footer-column col footer__col text--center"><div class="footer__title">APIs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/apis/ethud">EntityTrackerHUD</a></li></ul></div><div class="theme-layout-footer-column col footer__col text--right"><div class="footer__title">Me</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://space.bilibili.com/549306753" target="_blank" rel="noopener noreferrer" class="footer__link-item">Bilibili<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/FSVEp7hSdA" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/MakerTechno" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 MakerTechno, Dev. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
