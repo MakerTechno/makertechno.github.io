@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 try {
 	if (month == 3 && day == 1) {
-		window.location.href = "./hide/index.html"
+		window.location.href = "./teams/TiAP/hide/index.html"
 	} else {
 		switch (language) {
 			case 'en-us':
