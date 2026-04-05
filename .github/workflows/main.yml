@@ -1,0 +1,66 @@
+name: Build Workflow
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取主仓库
+      - name: Checkout main repo
+        uses: actions/checkout@v4
+
+      # 拉取文档主仓库
+      - name: Checkout DocumentsBuild
+        uses: actions/checkout@v4
+        with:
+          repository: The-Ti-Titanium-Adventurers-party/DocumentsBuild
+          token: ${{ secrets.GH_TEAM_TOKEN }}
+          path: DocumentsBuild
+
+      # 拉取1.21模组教程
+      - name: Checkout Tutorials
+        uses: actions/checkout@v4
+        with:
+          repository: The-Ti-Titanium-Adventurers-party/Minecraft1.21.1Tutorial
+          token: ${{ secrets.GH_TEAM_TOKEN }}
+          path: Tut
+
+      # 文件复制
+      - name: Organize files
+        run: |
+          mkdir tutorials apis added
+          cp -r Tut/1-NeoForge1.21Tutorial/* tutorial/
+          cp -r Tut/2-API/* apis/
+
+      # 打包并上传到 DocumentsBuild Release
+      - name: Create package
+        run: zip -r package.zip tutorials apis added
+
+      - name: Upload to DocumentsBuild Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: package.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TEAM_TOKEN }}
+
+      # 构建网页
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install and build
+        run: |
+          cd DocumentsBuild
+          yarn install
+          yarn build
+
+      # 过滤产物并复制到 docs
+      - name: Copy build output
+        run: |
+          mkdir -p docs
+          cp -r DocumentsBuild/build/* docs/
+          rm -f docs/.nojekyll docs/404.html
