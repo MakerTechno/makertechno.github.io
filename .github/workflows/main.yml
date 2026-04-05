@@ -37,6 +37,11 @@ jobs:
           cp -r Tut/2-API/* DocumentsBuild/apis/
 
       # 打包并上传到 DocumentsBuild Release
+      - name: Create tag
+        run: |
+          git tag v${{ github.run_number }}
+          git push origin v${{ github.run_number }}
+
       - name: Create package
         run: zip -r package.zip DocumentsBuild added
 
@@ -45,6 +50,7 @@ jobs:
         with:
           files: package.zip
           repository: The-Ti-Titanium-Adventurers-party/DocumentsBuild
+          tag_name: v${{ github.run_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TEAM_TOKEN }}
 
