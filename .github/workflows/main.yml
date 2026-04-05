@@ -1,6 +1,7 @@
 name: Build Workflow
-
 on:
+  push:
+    branches: [ test ]
   workflow_dispatch: 
 
 jobs:
