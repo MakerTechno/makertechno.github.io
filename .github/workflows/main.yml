@@ -33,17 +33,18 @@ jobs:
       - name: Organize files
         run: |
           mkdir tutorials apis added
-          cp -r Tut/1-NeoForge1.21Tutorial/* tutorial/
-          cp -r Tut/2-API/* apis/
+          cp -r Tut/1-NeoForge1.21Tutorial/* DocumentsBuild/tutorial/
+          cp -r Tut/2-API/* DocumentsBuild/apis/
 
       # 打包并上传到 DocumentsBuild Release
       - name: Create package
-        run: zip -r package.zip tutorials apis added
+        run: zip -r package.zip DocumentsBuild added
 
       - name: Upload to DocumentsBuild Release
         uses: softprops/action-gh-release@v1
         with:
           files: package.zip
+          repository: The-Ti-Titanium-Adventurers-party/DocumentsBuild
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TEAM_TOKEN }}
 
