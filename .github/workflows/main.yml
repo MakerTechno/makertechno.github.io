@@ -37,8 +37,8 @@ jobs:
       - name: Organize files
         run: |
           mkdir tutorials apis added
-          cp -r Tut/1-NeoForge1.21Tutorial/* DocumentsBuild/tutorial/
-          cp -r Tut/2-API/* DocumentsBuild/apis/
+          cp -r Tut/Tutorials/* DocumentsBuild/tutorial/
+          cp -r Tut/Apis/* DocumentsBuild/apis/
 
       # 打包并上传到 DocumentsBuild Release
       - name: Create package
