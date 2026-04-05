@@ -42,7 +42,8 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git tag v${{ github.run_number }}
-          git push https://x-access-token:${{ secrets.GH_TEAM_TOKEN }}@github.com/The-Ti-Titanium-Adventurers-party/DocumentsBuild v${{ github.run_number }}
+          git remote add documentsbuild https://x-access-token:${{ secrets.GH_TEAM_TOKEN }}@github.com/The-Ti-Titanium-Adventurers-party/DocumentsBuild.git
+          git push documentsbuild v${{ github.run_number }}
 
       - name: Create package
         run: zip -r package.zip DocumentsBuild added
