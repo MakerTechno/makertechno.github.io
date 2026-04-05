@@ -66,8 +66,8 @@ jobs:
       - name: Install and build
         run: |
           cd DocumentsBuild
-          yarn install
-          yarn build
+          npm ci
+          npm run build
 
       # 过滤产物并复制到 docs
       - name: Copy build output
