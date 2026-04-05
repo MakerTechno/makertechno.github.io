@@ -37,14 +37,6 @@ jobs:
           cp -r Tut/2-API/* DocumentsBuild/apis/
 
       # 打包并上传到 DocumentsBuild Release
-      - name: Create tag
-        run: |
-          cd DocumentsBuild
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git tag buildOutput
-          git push origin buildOutput
-
       - name: Create package
         run: zip -r package.zip DocumentsBuild added
 
