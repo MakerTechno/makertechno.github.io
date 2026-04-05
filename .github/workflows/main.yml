@@ -1,7 +1,5 @@
 name: Build Workflow
 on:
-  push:
-    branches: [ test ]
   workflow_dispatch: 
 
 jobs:
@@ -62,6 +60,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
       - name: Install and build
         run: |
