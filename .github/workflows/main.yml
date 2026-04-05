@@ -64,6 +64,7 @@ jobs:
         run: |
           cd DocumentsBuild
           npm ci
+          npm run clear
           npm run build
 
       # 过滤产物并复制到 docs
