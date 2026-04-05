@@ -70,6 +70,7 @@ jobs:
       # 过滤产物并复制到 docs
       - name: Copy build output
         run: |
+          rm -rf docs
           mkdir -p docs
           cp -r DocumentsBuild/build/* docs/
           rm -f docs/.nojekyll docs/404.html
