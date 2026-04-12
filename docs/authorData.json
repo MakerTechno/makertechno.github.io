@@ -1,0 +1,26 @@
+{
+	"_avatarShape说明": "circle=圆形, square=方形, rounded=圆角",
+	"MakerTechno": {
+		"name": "MakerTechno",
+		"avatar": "/docs/img/Maker.png",
+        "avatarDark": "/docs/img/MakerWhite.png",
+        "decorationColor": "#efd01e",
+        "decorationGlow": true,
+        "avatarShape": "square",
+		"bio": "一名小小的模组开发者",
+		"links": {
+			"github": "https://github.com/MakerTechno",
+			"bilibili": "https://space.bilibili.com/549306753",
+			"discord": "https://discord.gg/FSVEp7hSdA"
+		}
+	},
+	"yhz_cake": {
+		"name": "yhz_cake",
+		"avatar": "/docs/img/yhz_cake.png",
+		"bio": "一句",
+		"links": {
+			"github": "https://github.com/yhzcake",
+			"bilibili": "https://space.bilibili.com/286146693"
+		}
+	}
+}
