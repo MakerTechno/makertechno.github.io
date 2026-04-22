@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">第三章 基础概念 | MakerTechno Documents</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://makertechno.github.io/docs/img/Maker.png"><meta data-rh="true" name="twitter:image" content="https://makertechno.github.io/docs/img/Maker.png"><meta data-rh="true" property="og:url" content="https://makertechno.github.io/docs/tutorial/nf1.21/ep3"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-tutorial-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-tutorial-current"><meta data-rh="true" property="og:title" content="第三章 基础概念 | MakerTechno Documents"><meta data-rh="true" name="description" content="提示"><meta data-rh="true" property="og:description" content="提示"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://makertechno.github.io/docs/tutorial/nf1.21/ep3"><link data-rh="true" rel="alternate" href="https://makertechno.github.io/docs/tutorial/nf1.21/ep3" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://makertechno.github.io/docs/tutorial/nf1.21/ep3" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"NeoForge1.21开发教程","item":"https://makertechno.github.io/docs/tutorial/nf1.21"},{"@type":"ListItem","position":2,"name":"第三章 基础概念","item":"https://makertechno.github.io/docs/tutorial/nf1.21/ep3"}]}</script><link rel="stylesheet" href="/docs/assets/css/styles.746985e8.css">
-<script src="/docs/assets/js/runtime~main.63ec43b7.js" defer="defer"></script>
+<script src="/docs/assets/js/runtime~main.97eebfce.js" defer="defer"></script>
 <script src="/docs/assets/js/main.e57ff0fa.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -92,7 +92,7 @@
 <p>在FML(Fancy Mod Loader)加载模组的阶段，FML会<strong>扫描</strong>模组代码中的注解，并将收集到的事件注解自动添加到总线。你也可以将事件监听方法或类直接手动注册到总线上。这两种方法都很常见。</p>
 <blockquote>
 <p>⚠️<strong>注意</strong></p>
-<p>自NeoForge<code>21.1.181</code>起，不再需要显示声明使用的BUS类型，这件事我们在后面的文章中会再次提到。</p>
+<p>自NeoForge<code>21.1.181</code>起，使用<code>@SubscribeEvent</code>不再需要显示声明使用的BUS类型，这件事我们在后面的文章中会再次提到。</p>
 </blockquote>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="模组总线-mod-bus">模组总线-Mod Bus<a href="#模组总线-mod-bus" class="hash-link" aria-label="模组总线-Mod Bus的直接链接" title="模组总线-Mod Bus的直接链接">​</a></h4>
 <p>首先注意一点，FML在模组开始加载时<strong>会给每个可加载模组生成并分配一个模组总线</strong>，并传给该模组入口方法。值得注意的是，多个模组总线是<strong>并发的</strong>，也就是同一时刻会有多个模组监听自己的模组总线并执行初始化任务。这种设计使得FML可以更快地加载大量模组。也正是因为并行操作的不确定性，FML<strong>不会保证</strong>每个模组使用<code>enqueueWork</code>提交的工作<sup><a href="#user-content-fn-%E8%AF%A6%E6%83%853" id="user-content-fnref-%E8%AF%A6%E6%83%853" data-footnote-ref="true" aria-describedby="footnote-label">3</a></sup>的<strong>处理顺序</strong>，不过<strong>仅对单个模组</strong>的提交来说，顺序是<strong>正确的</strong>。</p>
