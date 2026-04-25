@@ -36,13 +36,13 @@ jobs:
       # 文件复制
       - name: Organize files
         run: |
-          mkdir tutorials apis added
+          mkdir tutorials apis
           cp -r Tut/Tutorials/* DocumentsBuild/tutorial/
           cp -r Tut/Apis/* DocumentsBuild/apis/
 
       # 打包并上传到 DocumentsBuild Release
       - name: Create package
-        run: zip -r package.zip DocumentsBuild added
+        run: zip -r package.zip DocumentsBuild
 
       - name: Upload to DocumentsBuild Release
         uses: softprops/action-gh-release@v1
