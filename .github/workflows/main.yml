@@ -41,7 +41,7 @@ jobs:
       # 文件复制
       - name: Organize files
         run: |
-          mkdir tutorials apis
+          mkdir tutorials apis changelog
           cp -r Tut/Tutorials/* DocumentsBuild/tutorial/
           cp -r Tut/Apis/* DocumentsBuild/apis/
           cp -r Tut/Changelog/* DocumentsBuild/changelog/
