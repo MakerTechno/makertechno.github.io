@@ -33,12 +33,18 @@ jobs:
           token: ${{ secrets.GH_TEAM_TOKEN }}
           path: Tut
 
+      # Changelog
+      - name: Generate Changelog
+        run: |
+          cd Tut && git log --pretty=format:"- commit %h: %s%n%w(0,2,2)-- %b" --no-merges > /tmp/changelog_insert.txt && sed -i "/\[insert\]/r /tmp/changelog_insert.txt" Changelog/index.md && sed -i "s/\[insert\]//g" Changelog/index.md
+      
       # 文件复制
       - name: Organize files
         run: |
           mkdir tutorials apis
           cp -r Tut/Tutorials/* DocumentsBuild/tutorial/
           cp -r Tut/Apis/* DocumentsBuild/apis/
+          cp -r Tut/Changelog/* DocumentsBuild/changelog/
 
       # 打包并上传到 DocumentsBuild Release
       - name: Create package
