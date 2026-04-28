@@ -46,7 +46,7 @@ jobs:
       - name: Generate Changelog
         run: |
           cd DocumentsBuild
-          git log --pretty=format:"- commit %h: %s%n%w(0,2,2)-- %b" --no-merges | sed '/^  -- $/d' > /tmp/changelog_insert.txt
+          git log --pretty=format:"- *%ad* (\`%h\`) %s%n%w(0,4,4)-- %b" --date=short --no-merges | sed '/^    -- $/d' > /tmp/changelog_insert.txt
           sed -i "/\[insert\]/r /tmp/changelog_insert.txt" changelog/index.md
           sed -i "s/\[insert\]//g" changelog/index.md
           
