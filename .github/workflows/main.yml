@@ -34,14 +34,6 @@ jobs:
           token: ${{ secrets.GH_TEAM_TOKEN }}
           path: Tut
 
-      # Changelog
-      - name: Generate Changelog
-        run: |
-          cd DocumentsBuild
-          git log --pretty=format:"- commit %h: %s%n%w(0,2,2)-- %b" --no-merges | sed '/^  -- $/d' > /tmp/changelog_insert.txt
-          sed -i "/\[insert\]/r /tmp/changelog_insert.txt" changelog/index.md
-          sed -i "s/\[insert\]//g" changelog/index.md
-          
       # 文件复制
       - name: Organize files
         run: |
@@ -50,6 +42,14 @@ jobs:
           cp -r Tut/Apis/* DocumentsBuild/apis/
           cp -r Tut/Changelog/* DocumentsBuild/changelog/
 
+      # Changelog
+      - name: Generate Changelog
+        run: |
+          cd DocumentsBuild
+          git log --pretty=format:"- commit %h: %s%n%w(0,2,2)-- %b" --no-merges | sed '/^  -- $/d' > /tmp/changelog_insert.txt
+          sed -i "/\[insert\]/r /tmp/changelog_insert.txt" changelog/index.md
+          sed -i "s/\[insert\]//g" changelog/index.md
+          
       # 打包并上传到 DocumentsBuild Release
       - name: Create package
         run: zip -r package.zip DocumentsBuild
