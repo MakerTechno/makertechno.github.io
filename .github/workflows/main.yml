@@ -24,6 +24,7 @@ jobs:
           repository: The-Ti-Titanium-Adventurers-party/DocumentsBuild
           token: ${{ secrets.GH_TEAM_TOKEN }}
           path: DocumentsBuild
+          fetch-depth: 0   # 拉取完整提交历史
 
       # 拉取1.21模组教程
       - name: Checkout Tutorials
@@ -36,8 +37,11 @@ jobs:
       # Changelog
       - name: Generate Changelog
         run: |
-          cd Tut && git log --pretty=format:"- commit %h: %s%n%w(0,2,2)-- %b" --no-merges > /tmp/changelog_insert.txt && sed -i "/\[insert\]/r /tmp/changelog_insert.txt" Changelog/index.md && sed -i "s/\[insert\]//g" Changelog/index.md
-      
+          cd DocumentsBuild
+          git log --pretty=format:"- commit %h: %s%n%w(0,2,2)-- %b" --no-merges | sed '/^  -- $/d' > /tmp/changelog_insert.txt
+          sed -i "/\[insert\]/r /tmp/changelog_insert.txt" changelog/index.md
+          sed -i "s/\[insert\]//g" changelog/index.md
+          
       # 文件复制
       - name: Organize files
         run: |
