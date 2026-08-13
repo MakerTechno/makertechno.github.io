@@ -13,9 +13,13 @@
 	align-items: center;
 }
 
-#loaderText1 {}
+#loaderText1 {
+	opacity: 0;
+}
 
-#loaderText2 {}
+#loaderText2 {
+	opacity: 0;
+}
 
 #canvas-container {
 	position: fixed;

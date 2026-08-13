@@ -356,6 +356,9 @@ function dispose() {
 		delayTime = Number.MAX_SAFE_INTEGER;
 		canvasContainer.remove();
 	});
+	if (window.parent !== window) {
+	    window.parent.postMessage('SPLASH_COMPLETE', '*');
+	}
 }
 
 function setAnimations(elements) {
